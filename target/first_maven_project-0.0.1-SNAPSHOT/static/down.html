@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+    var a = location;
+    console.log(a.pathname);
+    document.write(a.pathname.split(""));
+    function downloadDC() {
+        var u = navigator.userAgent;
+        if (u.indexOf('Android') > -1) {
+            window.location.href = "http://www.pgyer.com/kkyy";
+        } else if (u.indexOf('iPhone') > -1) {
+            window.location.href = "https://itunes.apple.com/cn/app/yi-yun-yi-sheng-duan/id1114454021?mt=8";
+        }
+        else if (u.indexOf('iPad') > -1) {
+            window.location.href = "https://itunes.apple.com/cn/app/yi-yun-yi-sheng-duan/id1114454021?mt=8";
+        }
+    }
+    function downloadP() {
+        var u = navigator.userAgent;
+        if (u.indexOf('Android') > -1) {
+            window.location.href = "http://www.pgyer.com/kkyyp";
+        } else if (u.indexOf('iPhone') > -1) {
+            window.location.href = "https://itunes.apple.com/cn/app/yi-yun-huan-zhe-duan/id1117749196?mt=8";
+        }
+        else if (u.indexOf('iPad') > -1) {
+            window.location.href = "https://itunes.apple.com/cn/app/yi-yun-huan-zhe-duan/id1117749196?mt=8";
+        }
+
+    }
+</script>
+</body>
+</html>
