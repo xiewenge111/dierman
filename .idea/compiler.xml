@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="dierman" />
         <module name="first_maven_project" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="dierman" target="1.5" />
       <module name="first_maven_project" target="1.6" />
     </bytecodeTargetLevel>
   </component>

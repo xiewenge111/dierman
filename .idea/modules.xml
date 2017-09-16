@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/dierman.iml" filepath="$PROJECT_DIR$/dierman.iml" />
       <module fileurl="file://$PROJECT_DIR$/first_maven_project.iml" filepath="$PROJECT_DIR$/first_maven_project.iml" />
       <module fileurl="file://$PROJECT_DIR$/first_maven_project.iml" filepath="$PROJECT_DIR$/first_maven_project.iml" />
     </modules>
