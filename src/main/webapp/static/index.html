@@ -28,10 +28,10 @@
     <script>
 
         $(function(){
-            $("#carousel").carousel({
-                interval:2000
+            $('#myCarousel').carousel({
+                //自动4秒播放
+                interval : 4000,
             });
-            $("#carousel").carousel('cycle');
         });
 
     </script>
@@ -80,9 +80,6 @@
             <div class="item" style="background:#CEB893;">
                 <img src="images/lunbo5.jpg" alt="第四张">
             </div>
-            <!-- 		<div style="background:#eee;">
-                        <img src="img/slide.png" alt="第三张">
-                    </div> -->
         </div>
         <a href="#myCarousel" data-slide="prev" class="carousel-control left">
             <span class="glyphicon glyphicon-chevron-left"></span>
