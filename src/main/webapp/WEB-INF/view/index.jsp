@@ -2,7 +2,7 @@
 <html>
 <head>
 	<script language="javascript" type="text/javascript">
-        window.location.href="/static/index.html";
+        window.location.href="/dierman/static/index.html";
 	</script>
 </head>
 <body>
