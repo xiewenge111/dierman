@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="41582c83-98a8-4ab8-b4cf-a4982540b764" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/login.html" afterPath="$PROJECT_DIR$/src/main/webapp/static/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/static/communicationPlatform.html" afterPath="$PROJECT_DIR$/src/main/webapp/static/communicationPlatform.html" />
     </list>
     <ignored path="first_maven_project.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -134,11 +134,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="167" column="23" lean-forward="true" selection-start-line="167" selection-start-column="23" selection-end-line="167" selection-end-column="23" />
+            <state relative-caret-position="1804">
+              <caret line="173" column="40" lean-forward="true" selection-start-line="173" selection-start-column="40" selection-end-line="173" selection-end-column="41" />
               <folding>
                 <element signature="n#style#0;n#span#0;n#div#7;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -146,11 +146,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="communicationPlatform.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="communicationPlatform.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/communicationPlatform.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="185" column="17" lean-forward="false" selection-start-line="185" selection-start-column="17" selection-end-line="185" selection-end-column="17" />
+            <state relative-caret-position="88">
+              <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -225,7 +225,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/luo/common/util/CustomerUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/luo/service/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/luo/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/springmvc/spring-mvc.xml" />
@@ -276,6 +275,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/static/consultation.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/assets/js/datatable/datatables-init.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/login.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/communicationPlatform.html" />
       </list>
     </option>
   </component>
@@ -322,7 +322,7 @@
     <option name="skipTests" value="true" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-2" />
+    <option name="x" value="-3" />
     <option name="y" value="-2" />
     <option name="width" value="1370" />
     <option name="height" value="744" />
@@ -1179,7 +1179,7 @@
       <workItem from="1506844524426" duration="1123000" />
       <workItem from="1506949297439" duration="5307000" />
       <workItem from="1507428437505" duration="12980000" />
-      <workItem from="1507730233713" duration="3485000" />
+      <workItem from="1507730233713" duration="3940000" />
     </task>
     <task id="LOCAL-00001" summary="dfdfdfdsfsfsfssfsaf">
       <created>1505568860553</created>
@@ -1300,7 +1300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1507733675045</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="添加后台管理页面-登录功能&#10;">
+      <created>1507733757783</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1507733757783</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1336,7 +1343,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114883000" />
+    <option name="totallyTimeSpent" value="115338000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1348,7 +1355,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="-2" width="1370" height="744" extended-state="0" />
+    <frame x="-3" y="-2" width="1370" height="744" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1787,11 +1794,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/communicationPlatform.html">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="185" column="17" lean-forward="false" selection-start-line="185" selection-start-column="17" selection-end-line="185" selection-end-column="17" />
-          <folding />
+        <state relative-caret-position="1804">
+          <caret line="173" column="40" lean-forward="true" selection-start-line="173" selection-start-column="40" selection-end-line="173" selection-end-column="41" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#7;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1803,13 +1812,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/login.html">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/communicationPlatform.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="167" column="23" lean-forward="true" selection-start-line="167" selection-start-column="23" selection-end-line="167" selection-end-column="23" />
-          <folding>
-            <element signature="n#style#0;n#span#0;n#div#7;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="88">
+          <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
