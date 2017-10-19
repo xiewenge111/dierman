@@ -34,7 +34,39 @@
               interval : 4000,
           });
       });
-
+      function registerVip() {
+          var username=$("#userName1").val();
+          var moblie=$("#moblie").val();
+          $("#msgerror").html("");
+          $("#msgsuccess").html("");
+          var flag = true;
+          if (username=='') {
+              flag = false;
+              $("#msgerror").html("用户姓名不能为空！");
+          }else if (moblie == ""){
+              flag = false;
+              $("#msgerror").html("用户电话不能为空！");
+          }
+          if (flag) {
+              $.ajax({
+                  url: "/dierman/insertVip",
+                  type: "post",
+                  dataType: "json",
+                  async : false,
+                  data: {
+                      "mobile":moblie,
+                      "vipName":username
+                  },
+                  success: function (res) {
+                     if (res.returnCode == "000") {
+                         $("#msgsuccess").html("注册成功");
+                     }else if(res.returnCode == "002") {
+                         $("#msgsuccess").html("注册成功");
+                     }
+                  },
+              });
+          }
+      }
   </script>
 </head>
 <body>
@@ -136,16 +168,20 @@
           <form class="form-horizontal">
             <div class="control-group">
               <label class="control-label">用户姓名：</label>
-              <input type="text">
+              <input type="text" id="userName1">
             </div>
             <div class="control-group">
               <label class="control-label">联系电话：</label>
-              <input type="text">
+              <input type="text" id="moblie">
+            </div>
+            <div class="control-group" style="padding-left: 35px">
+              <span id="msgerror" style="color: red"></span>
+              <span id="msgsuccess" style="color: green"></span>
             </div>
           </form>
         </div>
-        <button type="button" class="btn btn-success">会员注册</button>
-        <button type="button" class="btn btn-primary">投诉建议</button>
+        <a class="btn btn-success" onclick="registerVip()">会员注册</a>
+        <a href="consultation.html" class="btn btn-primary">投诉建议</a>
         <p></p><br>
         <p style="color: red">注：诚信服务，我们将保护您的隐私，请您放心！</p><br>
       </div>

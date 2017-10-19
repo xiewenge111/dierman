@@ -34,7 +34,11 @@
                 interval : 4000,
             });
         });
-
+        function reset() {
+            $("#moblie2").val("");
+            $("#userName2").val("");
+            $("#testarea2").val("");
+        }
     </script>
 </head>
 <body>
@@ -72,15 +76,15 @@
             <div class="text col-md-6 col-sm-6"  style="padding: 5px">
                 <h3>完美的管理方式</h3><br>
                 <p>为更好服务大众，我们真诚的欢迎您提出宝贵的意见和建议，我们将第一时间给你答复！</p>
-                <div class="modal-body">
+                <div class="modal-body" style="width: 500px">
                     <form class="form-horizontal">
                         <div class="control-group" style="padding: 5px">
                             <label class="control-label">联系称呼：</label>
-                            <input type="text">
+                            <input type="text" id="userName2" style="width: 300px">
                         </div>
                         <div class="control-group" style="padding: 5px">
                             <label class="control-label">联系方式：</label>
-                            <select id="" name="" style="width: 260px;height: 35px">
+                            <select id="" name="" style="width: 300px;height: 35px">
                                 <option value="0">手机</option>
                                 <option value="1">QQ</option>
                                 <option value="2">邮箱</option>
@@ -88,15 +92,18 @@
                         </div>
                         <div class="control-group" style="padding: 5px">
                             <label class="control-label">联系号码：</label>
-                            <input type="text">
+                            <input type="text" id="moblie2"style="width: 300px">
                         </div>
                         <div class="control-group" style="padding: 5px">
                             <label class="control-label">问题内容：</label>
-                            <textarea name="a" style="width:260px;height:80px;">这里写内容</textarea>
+                            <textarea name="a" style="width:300px;height:80px;" id="testarea2">这里写内容</textarea>
+                        </div>
+                        <div class="control-group">
+                            <a class="btn btn-success">提 交</a>
+                            <a class="btn btn-success" onclick="reset()">重 置</a>
                         </div>
                     </form>
                 </div>
-                <button type="button" class="btn btn-success">提交</button>
             </div>
         </div>
     </div>

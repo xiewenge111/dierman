@@ -1,8 +1,6 @@
 package com.wg.controller.router.router;
 
 
-import com.wg.common.utils.MapToClassUtils;
-
 import java.util.Map;
 
 /**
@@ -25,6 +23,6 @@ public class DefaultArgsbuilder extends Argsbuilder {
 		if(this.argClassName==null||"".equals(this.argClassName)){
 			return null;
 		}
-		return MapToClassUtils.map2Class(data, Class.forName(this.argClassName));
+		return null;
 	}
 }

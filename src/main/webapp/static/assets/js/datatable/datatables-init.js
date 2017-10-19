@@ -336,3 +336,24 @@ var InitiateSearchableDataTable = function () {
         }
     }
 }();
+var InitiateQueryData = function () {
+    return {
+        init: function () {
+            getData();
+            function getData() {
+                $.ajax({
+                    url: "/dierman/queryVip",
+                    type: "get",
+                    dataType: "json",
+                    async : false,
+                    success: function (res) {
+                        for(var i=0;i < res.length;i++){
+                            alert(res[i].mobile);
+                        }
+                    },
+                });
+            }
+
+        }
+    }
+}();
