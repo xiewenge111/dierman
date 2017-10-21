@@ -39,6 +39,54 @@
             $("#userName2").val("");
             $("#testarea2").val("");
         }
+        function registerData() {
+            var username=$("#userName2").val();
+            var moblie=$("#moblie2").val();
+            var moblieType = $('#mobileType').find('option:selected').val();
+            var testarea =$("#testarea2").val();
+            var reg = new RegExp("^[0-9]*$");
+            $("#msgerror_username").html("");
+            $("#msgerror_moblie").html("");
+            $("#msgerror_testarea").html("");
+            $("#msgsuccess").html("");
+            $("#msgerror").html("");
+            var flag = true;
+            if (username=='') {
+                flag = false;
+                $("#msgerror_username").html("联系称呼不能为空！");
+            }else if (moblieType == 'e' && moblie == ""){
+
+            }else if (moblieType != 'e' && (moblie == "" || !reg.test(moblie))){
+                flag = false;
+                $("#msgerror_moblie").html("联系电话不能为空并且只能为数字！");
+            }else if (testarea == "") {
+                flag = false;
+                $("#msgerror_testarea").html("问题内容不能为空！");
+            }
+            if (flag) {
+                $.ajax({
+                    url: "/dierman/insertReqution",
+                    type: "post",
+                    dataType: "json",
+                    async : false,
+                    data: {
+                        "contactNumber":moblie,
+                        "contactName":username,
+                        "contactInfo":testarea,
+                        "contactType":moblieType
+                    },
+                    success: function (res) {
+                        if (res.returnCode == "000") {
+                            reset();
+                            $("#msgsuccess").html("提交成功　　　　　　");
+                        }else if(res.returnCode == "002") {
+                            $("#msgerror").html("提交失败　　　　　　");
+                        }
+                    },
+                });
+            }
+        }
+
     </script>
 </head>
 <body>
@@ -82,24 +130,35 @@
                             <label class="control-label">联系称呼：</label>
                             <input type="text" id="userName2" style="width: 300px">
                         </div>
+                        <div class="control-group">
+                            <span id="msgerror_username" style="color: red"></span>
+                        </div>
                         <div class="control-group" style="padding: 5px">
                             <label class="control-label">联系方式：</label>
-                            <select id="" name="" style="width: 300px;height: 35px">
-                                <option value="0">手机</option>
-                                <option value="1">QQ</option>
-                                <option value="2">邮箱</option>
+                            <select id="mobileType" name="" style="width: 300px;height: 35px">
+                                <option value="m">手机</option>
+                                <option value="q">QQ</option>
+                                <option value="e">邮箱</option>
                             </select>
                         </div>
                         <div class="control-group" style="padding: 5px">
                             <label class="control-label">联系号码：</label>
                             <input type="text" id="moblie2"style="width: 300px">
                         </div>
+                        <div class="control-group" style="padding-left: 130px">
+                            <span id="msgerror_moblie" style="color: red"></span>
+                        </div>
                         <div class="control-group" style="padding: 5px">
                             <label class="control-label">问题内容：</label>
-                            <textarea name="a" style="width:300px;height:80px;" id="testarea2">这里写内容</textarea>
+                            <textarea name="a" style="width:300px;height:80px;" id="testarea2" placeholder="请输入内容……"></textarea>
                         </div>
                         <div class="control-group">
-                            <a class="btn btn-success">提 交</a>
+                            <span id="msgerror_testarea" style="color: red"></span>
+                            <span id="msgerror" style="color: red"></span>
+                            <span id="msgsuccess" style="color: green"></span>
+                        </div>
+                        <div class="control-group">
+                            <a class="btn btn-success" onclick="registerData()">提 交</a>
                             <a class="btn btn-success" onclick="reset()">重 置</a>
                         </div>
                     </form>

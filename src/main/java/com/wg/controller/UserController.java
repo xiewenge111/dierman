@@ -4,6 +4,8 @@ import javax.annotation.Resource;
 
 import com.alibaba.fastjson.JSON;
 import com.wg.common.utils.JsonUtil;
+import com.wg.domain.ContactInfo;
+import com.wg.domain.ContactInfoExample;
 import com.wg.domain.VipMemberInfo;
 import com.wg.domain.VipMemberInfoExample;
 import com.wg.dto.BasicReturnBO;
@@ -65,7 +67,6 @@ public class UserController {
     @ResponseBody
     public String queryVip(){
         VipMemberInfoExample example = new VipMemberInfoExample();
-        ModelAndView mav = new ModelAndView("test");
         List<VipMemberInfo> list =  userService.selectMemberInfoByExample(example);
         for (VipMemberInfo info : list) {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -74,6 +75,91 @@ public class UserController {
             info.setGmtCreateStr(gmtCreateStr);
         }
         return JSON.toJSONString(list);
+
+    }
+    @RequestMapping(value="/modifyVip",method={RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public String modifyVip(String mobile,String remark){
+        BasicReturnBO returnBO = new BasicReturnBO();
+        VipMemberInfo record = new VipMemberInfo();
+        record.setMobile(mobile);
+        record.setRemark(remark);
+        record.setGmtModity(new Date());
+        int result =  userService.updateMemberByPrimaryKeySelective(record);
+        if ( result > 0 ) {
+            returnBO.setReturnCode("0000");
+            returnBO.setReturnMsg("success");
+            return JSON.toJSONString(returnBO);
+        }
+        returnBO.setReturnCode("0001");
+        returnBO.setReturnMsg("error");
+        return JSON.toJSONString(returnBO);
+
+    }
+    @RequestMapping(value="/insertReqution",method={RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public String insertReqution(ContactInfo record ){
+        BasicReturnBO returnBO = new BasicReturnBO();
+        record.setGmtCreate(new Date());
+        record.setGmtModity(new Date());
+        record.setStatus("N");
+        int restlt ;
+        try{
+            restlt = userService.insertContactInfo(record);
+        }catch(Exception e){
+            restlt = -1;
+        }
+        if (restlt >= 1) {
+            returnBO.setReturnCode("000");
+            returnBO.setReturnMsg("success");
+        } else {
+            returnBO.setReturnCode("001");
+            returnBO.setReturnMsg("error");
+        }
+        return JsonUtil.json2String(returnBO);
+    }
+    @RequestMapping(value="/queryReqution",method={RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public String queryReqution(){
+        ContactInfoExample example = new ContactInfoExample();
+        List<ContactInfo> list =  userService.selectByExample(example);
+        for (ContactInfo info : list) {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String gmtCreateStr = formatter.format(info.getGmtCreate());
+            info.setGmtCreateStr(gmtCreateStr);
+            if (info.getContactType().equals("m")) {
+                info.setContactTypeStr("手机");
+            }else if (info.getContactType().equals("q")) {
+                info.setContactTypeStr("QQ");
+            }else if (info.getContactType().equals("e")) {
+                info.setContactTypeStr("邮箱");
+            }
+            if (info.getStatus().equals("Y")) {
+                info.setStatus("已处理");
+            }else {
+                info.setStatus("未处理");
+            }
+        }
+        return JSON.toJSONString(list);
+
+    }
+    @RequestMapping(value="/modifyRequestion",method={RequestMethod.GET,RequestMethod.POST})
+    @ResponseBody
+    public String modifyRequestion(int id){
+        BasicReturnBO returnBO = new BasicReturnBO();
+        ContactInfo record = new ContactInfo();
+        record.setId(id);
+        record.setStatus("Y");
+        record.setGmtModity(new Date());
+        int result =  userService.updateByPrimaryKeySelective(record);
+        if ( result > 0 ) {
+            returnBO.setReturnCode("0000");
+            returnBO.setReturnMsg("success");
+            return JSON.toJSONString(returnBO);
+        }
+        returnBO.setReturnCode("0001");
+        returnBO.setReturnMsg("error");
+        return JSON.toJSONString(returnBO);
 
     }
   

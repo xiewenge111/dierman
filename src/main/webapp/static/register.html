@@ -37,6 +37,7 @@
       function registerVip() {
           var username=$("#userName1").val();
           var moblie=$("#moblie").val();
+          var remark =$("#remark").val();
           $("#msgerror").html("");
           $("#msgsuccess").html("");
           var flag = true;
@@ -55,7 +56,8 @@
                   async : false,
                   data: {
                       "mobile":moblie,
-                      "vipName":username
+                      "vipName":username,
+                      "remark":remark
                   },
                   success: function (res) {
                      if (res.returnCode == "000") {
@@ -173,6 +175,10 @@
             <div class="control-group">
               <label class="control-label">联系电话：</label>
               <input type="text" id="moblie">
+            </div>
+            <div class="control-group">
+              <label class="control-label">备注信息：</label>
+              <input type="text" id="remark">
             </div>
             <div class="control-group" style="padding-left: 35px">
               <span id="msgerror" style="color: red"></span>

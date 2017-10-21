@@ -44,7 +44,7 @@ Purchase: http://wrapbootstrap.com
             <!-- Navbar Barnd -->
             <div class="navbar-header pull-left">
                 <a href="#" class="navbar-brand">
-                    存管日志监控
+                    帝尔曼后台系统
                 </a>
             </div>
             <!-- /Navbar Barnd -->
@@ -120,7 +120,7 @@ Purchase: http://wrapbootstrap.com
                                         <thead>
                                         <tr role="row">
                                             <th  class="center ">
-                                                会员名称
+                                                会员姓名
                                             </th>
                                             <th  class="center ">
                                                 会员电话
@@ -138,14 +138,52 @@ Purchase: http://wrapbootstrap.com
                                         </thead>
 
                                         <tbody id="tbody11">
-
-                                        </tbody>
-                                    </table>
+                                        </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <!-- 模态框（Modal） -->
+            <button id="aaaa" class="btn btn-info btn-xs edit" data-toggle="modal" data-target="#myModal">
+                开始演示模态框
+            </button>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                修改会员信息
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group">
+                                <span class="input-group-addon">会员姓名：</span>
+                                <input type="text" class="form-control" id="userName_edit" readonly>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">会员电话：</span>
+                                <input type="text" class="form-control" id="moblie_edit" readonly>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">会员备注：</span>
+                                <input type="text" class="form-control" id="remark_edit">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭
+                            </button>
+                            <button type="button" class="btn btn-primary" onclick="submitEdit()">
+                                提交更改
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
             </div>
         </div>
     </div>
@@ -170,6 +208,13 @@ Purchase: http://wrapbootstrap.com
 <script src="assets/js/datatable/dataTables.bootstrap.min.js"></script>
 <script src="assets/js/datatable/datatables-init.js"></script>
 <script>
+    function editData(e) {
+        var data =e.split("#");
+        $("#userName_edit").val(data[0]);
+        $("#moblie_edit").val(data[1]);
+        $("#remark_edit").val(data[2]);
+        $("#aaaa").click();
+    }
     $(function () {
         $.ajax({
             url: "/dierman/queryVip",
@@ -179,6 +224,7 @@ Purchase: http://wrapbootstrap.com
             success: function (res) {
                 $("#tbody11").empty();
                 for(var i=0;i < res.length;i++){
+                    var reqdata = res[i].mobile+"#"+res[i].vipName;
                     $("#tbody11").append(
                 "<tr>"+
                     "<td>"+res[i].vipName+"</td>"+
@@ -186,7 +232,7 @@ Purchase: http://wrapbootstrap.com
                     "<td>"+res[i].remark+"</td>"+
                     "<td>"+res[i].gmtCreateStr+"</td>"+
                     "<td>"+
-                        "<a href='#' class='btn btn-info btn-xs edit'><i class='fa fa-edit'></i> 修改</a>"+
+                        "<button class='btn btn-info btn-xs edit' onclick='editData(\""+res[i].vipName+"#"+res[i].mobile+"#"+res[i].remark+"\")'><i class='fa fa-edit'></i> 修改</button>"+
                         "<a href='#' class='btn btn-danger btn-xs delete'><i class='fa fa-trash-o'></i> 删除</a>"+
                      "</td>"+
                   "</tr>"
@@ -195,10 +241,30 @@ Purchase: http://wrapbootstrap.com
             }
         });
     });
-    InitiateSimpleDataTable.init();
-    InitiateEditableDataTable.init();
-    InitiateExpandableDataTable.init();
-    InitiateSearchableDataTable.init();
+
+    function submitEdit() {
+        var usermoblie = $("#moblie_edit").val();
+        var remark = $("#remark_edit").val();
+        $.ajax({
+            url: "/dierman/modifyVip",
+            type: "post",
+            dataType: "json",
+            data :{
+                "mobile":usermoblie,
+                "remark":remark
+            },
+            success: function (res) {
+                 if(res.returnCode == "0000") {
+                     window.location.reload();
+                 }
+
+            }
+        });
+    }
+//    InitiateSimpleDataTable.init();
+//    InitiateEditableDataTable.init();
+//    InitiateExpandableDataTable.init();
+//    InitiateSearchableDataTable.init();
     //InitiateQueryData.init();
 </script>
 </body>

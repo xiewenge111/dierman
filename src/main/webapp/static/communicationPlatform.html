@@ -140,17 +140,8 @@ Purchase: http://wrapbootstrap.com
                                         </tr>
                                         </thead>
 
-                                        <tbody>
-                                        <tr>
+                                        <tbody id="tbody11">
 
-                                            <td>张三-QQ-1234567890</td>
-                                            <td>你好啊？</td>
-                                            <td>2017-10-11</td>
-                                            <td>已回复</td>
-                                            <td>
-                                                <button href="#" class="btn btn-xs btn-success"> 处理</button>
-                                            </td>
-                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -182,10 +173,53 @@ Purchase: http://wrapbootstrap.com
 <script src="assets/js/datatable/dataTables.bootstrap.min.js"></script>
 <script src="assets/js/datatable/datatables-init.js"></script>
 <script>
-    InitiateSimpleDataTable.init();
-    InitiateEditableDataTable.init();
-    InitiateExpandableDataTable.init();
-    InitiateSearchableDataTable.init();
+    //InitiateRequstionDataTable.init();
+    $(function () {
+        $.ajax({
+            url: "/dierman/queryReqution",
+            type: "get",
+            dataType: "json",
+            async : false,
+            success: function (res) {
+                $("#tbody11").empty();
+                for(var i=0;i < res.length;i++){
+                    $("#tbody11").append(
+                        "<tr>"+
+                        "<td>"+res[i].contactName+"-"+res[i].contactTypeStr+"-"+res[i].contactNumber+"</td>"+
+                        "<td>"+res[i].contactInfo+"</td>"+
+                        "<td>"+res[i].gmtCreateStr+"</td>"+
+                        "<td>"+res[i].status+"</td>"+
+                        "<td>"+
+                        "<button href='#' class='btn btn-xs btn-success' onclick='updateData(\""+res[i].id+"\")'> 处理</button>"+
+                        "</td>"+
+                        "</tr>"
+                    );
+                }
+                InitiateSimpleDataTable.init();
+                InitiateEditableDataTable.init();
+                InitiateExpandableDataTable.init();
+                InitiateSearchableDataTable.init();
+            }
+        });
+    });
+    function updateData(e) {
+        $.ajax({
+            url: "/dierman/modifyRequestion",
+            type: "post",
+            dataType: "json",
+            data :{
+                "id":e,
+            },
+            success: function (res) {
+                if(res.returnCode == "0000") {
+                    alert("操作成功！");
+                    window.location.reload();
+                }
+
+            }
+        });
+
+    }
 </script>
 </body>
 <!--  /Body -->
